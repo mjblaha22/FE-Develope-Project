@@ -4,6 +4,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+// this plugin is deprecated and screws up everything
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -30,6 +32,8 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({ filename: "[name].css" }),
+        // took this off because it causes all the issues that makes me want to rip my teeth out
+        new WorkboxPlugin.GenerateSW(),
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",

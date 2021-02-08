@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>The News Article</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h1>Natural Language Article Project</h1>
+        <h2>Evaluation of Article Text</h2>
+      </div>
+    </header>
 
-    <body>
+    <main>
+      <p class="">Type/Past a Url to article to acquire sentiment</p>
+      <section>
+        <form class="" onsubmit="return Client.handleSubmit(event)">
+          <input
+            id="url"
+            type="text"
+            name="input"
+            value=""
+            placeholder="Place URL here"
+          />
+          <input type="submit" name="" value="submit" />
+        </form>
+      </section>
 
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
+      <section>
+        <strong>Form Results:</strong>
+        <div id="polarity"></div>
+        <div id="agreement"></div>
+        <div id="subjectivity"></div>
+        <div id="confidence"></div>
+        <div id="irony"></div>
+      </section>
+    </main>
+    <footer>
+      <p>Footer</p>
+    </footer>
 
-        <main>
-            <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                </form>
-            <section>
+    <!-- dam deprecated serviceworker/workbox!! breaks everything-->
 
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-            </section>
-        </main>
-
-        <footer>
-            <p>This is a footer</p>
-        </footer>
-
-    </body>
+    <script>
+      // <!-- // Check that service workers are supported -->
+      if ("serviceWorker" in navigator) {
+        // Use the window load event to keep the page load performant -->
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+    </script>
+    <script src="./index.js"></script>
+  </body>
 </html>
